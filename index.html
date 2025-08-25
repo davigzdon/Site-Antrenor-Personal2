@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FITCOACH</title>
+    <!-- Incarca fontul Inter de la Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Incarca Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Incarca Font Awesome pentru iconite -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Configurare culori Tailwind personalizate -->
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: '#FF7F50', // Culori personalizate
+              secondary: '#FFB380',
+              text: '#333333',
+              background: '#FFFFFF',
+              'light-grey': '#F5F5F5'
+            },
+            fontFamily: {
+              inter: ['Inter', 'sans-serif'],
+            },
+            boxShadow: {
+              'custom': '0 4px 15px rgba(0, 0, 0, 0.1)',
+              'custom-light': '0 2px 10px rgba(0, 0, 0, 0.05)',
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      body {
+        font-family: 'Inter', sans-serif;
+        color: #333333;
+        background-color: #FFFFFF;
+      }
+      .bg-hero-image {
+          background-image: url('https://placehold.co/1920x1080/4c4c4c/ffffff?text=Antrenor+Personal');
+          background-size: cover;
+          background-position: center;
+          position: relative;
+      }
+      .bg-hero-image::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7));
+      }
+      .fade-in-up {
+          opacity: 0;
+          transform: translateY(20px);
+          transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+      }
+      .fade-in-up.animate {
+          opacity: 1;
+          transform: translateY(0);
+      }
+      /* Stiluri pentru a face fontul portocaliu */
+      .highlight-text {
+        color: #FF7F50;
+      }
+      .highlight-text-white {
+        color: #FFFFFF;
+      }
+    </style>
+</head>
+<body class="bg-background text-text font-inter">
+
+    <!-- Navigare -->
+    <header class="absolute top-0 left-0 w-full z-20 py-4 px-6 md:px-12">
+        <nav class="flex justify-between items-center max-w-7xl mx-auto">
+            <div class="flex items-center space-x-2">
+                <svg class="w-8 h-8 text-primary" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15.5V11h-2v6.5h2zm4-6.5h-2v6.5h2v-6.5z"/></svg>
+                <span class="text-2xl font-bold text-text">FITCOACH</span>
+            </div>
+            <ul class="hidden md:flex items-center space-x-8 text-lg font-medium">
+                <li><a href="#acasa" class="hover:text-primary transition-colors duration-300">Acasă</a></li>
+                <li><a href="#despre" class="hover:text-primary transition-colors duration-300">Despre</a></li>
+                <li><a href="#servicii" class="hover:text-primary transition-colors duration-300">Servicii</a></li>
+                <li><a href="#contact" class="hover:text-primary transition-colors duration-300">Contact</a></li>
+                <li><a href="#" class="bg-primary text-white font-bold py-2 px-6 rounded-full shadow-lg hover:bg-secondary transition-colors duration-300">Programează-te</a></li>
+            </ul>
+            <button class="md:hidden text-text text-2xl">
+                <!-- Icon meniu burger -->
+                &#9776;
+            </button>
+        </nav>
+    </header>
+
+    <!-- Sectiune Hero -->
+    <section id="acasa" class="bg-hero-image h-screen flex items-center justify-center text-center text-white relative z-10">
+        <div class="relative z-10 max-w-4xl px-4 fade-in-up">
+            <h2 class="text-5xl md:text-6xl font-extrabold tracking-tight leading-tight mb-4">
+                Transformă-ți <span class="highlight-text-white">Corpul</span><br>
+                Transformă-ți <span class="highlight-text-white">Viața</span>
+            </h2>
+            <p class="text-lg md:text-xl font-medium mb-8">
+                Personal trainer certificat cu experiență în transformarea fizică și mentală. Programele mele personalizate te ajută să-ți atingi obiectivele rapid și sustenabil.
+            </p>
+            <div class="flex justify-center space-x-4">
+                <a href="#servicii" class="bg-primary hover:bg-secondary transition-colors duration-300 text-white font-bold py-3 px-8 rounded-full shadow-lg">
+                    Începe Transformarea
+                </a>
+                <a href="#despre" class="bg-white hover:bg-gray-200 transition-colors duration-300 text-primary font-bold py-3 px-8 rounded-full shadow-lg border-2 border-primary">
+                    Află Mai Mult
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sectiune Despre Mine -->
+    <section id="despre" class="py-20 px-4 bg-white">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div class="fade-in-up">
+                <h3 class="text-4xl font-extrabold mb-4">
+                    Despre <span class="highlight-text">Mine</span>
+                </h3>
+                <p class="text-lg text-gray-700 mb-6">
+                    Sunt un personal trainer certificat cu o pasiune pentru transformarea vieților prin fitness. Cu o experiență de peste 5 ani în domeniu, am ajutat sute de persoane să-și atingă obiectivele de fitness și să adopte un stil de viață sănătos.
+                </p>
+                <p class="text-lg text-gray-700 mb-6">
+                    Specializarea mea include antrenamente de forță, pierderea în greutate, câștigarea de masă musculară și reabilitarea după accidentări. Fiecare program este personalizat în funcție de nevoile și obiectivele tale specifice.
+                </p>
+                <h4 class="text-xl font-bold mt-8 mb-4">Certificări & Calificări:</h4>
+                <div class="flex flex-wrap gap-2 text-sm font-medium">
+                    <span class="bg-primary text-white py-2 px-4 rounded-full">Certificat NASM-CPT</span>
+                    <span class="bg-gray-200 text-gray-800 py-2 px-4 rounded-full">Nutriție Sportivă</span>
+                    <span class="bg-gray-200 text-gray-800 py-2 px-4 rounded-full">Antrenament Funcțional</span>
+                    <span class="bg-gray-200 text-gray-800 py-2 px-4 rounded-full">Primul Ajutor</span>
+                </div>
+            </div>
+            <div class="grid grid-cols-2 gap-6 text-center fade-in-up">
+                <div class="bg-light-grey rounded-lg p-6 shadow-custom-light">
+                    <p class="text-4xl font-extrabold text-primary">150+</p>
+                    <p class="text-gray-700 mt-2">Clienți Transformați</p>
+                </div>
+                <div class="bg-light-grey rounded-lg p-6 shadow-custom-light">
+                    <p class="text-4xl font-extrabold text-primary">5</p>
+                    <p class="text-gray-700 mt-2">Ani Experiență</p>
+                </div>
+                <div class="bg-light-grey rounded-lg p-6 shadow-custom-light">
+                    <p class="text-4xl font-extrabold text-primary">95%</p>
+                    <p class="text-gray-700 mt-2">Rata de Succes</p>
+                </div>
+                <div class="bg-light-grey rounded-lg p-6 shadow-custom-light">
+                    <p class="text-4xl font-extrabold text-primary">24/7</p>
+                    <p class="text-gray-700 mt-2">Suport Disponibil</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sectiune Servicii -->
+    <section id="servicii" class="py-20 px-4 bg-light-grey">
+        <div class="max-w-7xl mx-auto text-center fade-in-up">
+            <h3 class="text-4xl font-extrabold mb-4">
+                Serviciile <span class="highlight-text">Mele</span>
+            </h3>
+            <p class="text-lg text-gray-700 mb-12">
+                Alege programul care se potrivește cel mai bine nevoilor și obiectivelor tale. Fiecare serviciu este proiectat pentru a te ajuta să obții rezultate remarcabile.
+            </p>
+            <div class="flex flex-col lg:flex-row items-center lg:items-start justify-center gap-8">
+                <!-- Serviciu 1 -->
+                <div class="bg-white rounded-xl p-8 shadow-custom transition-transform hover:scale-105 duration-300 w-full lg:w-1/3 max-w-md">
+                    <h4 class="text-2xl font-bold mb-4">Antrenament Personal<br>1-la-1</h4>
+                    <p class="text-4xl font-bold text-primary mb-4">150 RON/sesiune</p>
+                    <ul class="text-left space-y-2 text-gray-700">
+                        <li class="flex items-start"><svg class="w-5 h-5 mr-2 mt-1 text-primary flex-shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.2l-3.5-3.5c-.39-.39-1.02-.39-1.41 0-.39.39-.39 1.02 0 1.41l4.24 4.24c.39.39 1.02.39 1.41 0L20.59 7.79c.39-.39.39-1.02 0-1.41-.39-.39-1.02-.39-1.41 0L9 16.2z"/></svg>Program personalizat 100%</li>
+                        <li class="flex items-start"><svg class="w-5 h-5 mr-2 mt-1 text-primary flex-shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.2l-3.5-3.5c-.39-.39-1.02-.39-1.41 0-.39.39-.39 1.02 0 1.41l4.24 4.24c.39.39 1.02.39 1.41 0L20.59 7.79c.39-.39.39-1.02 0-1.41-.39-.39-1.02-.39-1.41 0L9 16.2z"/></svg>Atenție completă din partea trainer-ului</li>
+                        <li class="flex items-start"><svg class="w-5 h-5 mr-2 mt-1 text-primary flex-shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.2l-3.5-3.5c-.39-.39-1.02-.39-1.41 0-.39.39-.39 1.02 0 1.41l4.24 4.24c.39.39 1.02.39 1.41 0L20.59 7.79c.39-.39.39-1.02 0-1.41-.39-.39-1.02-.39-1.41 0L9 16.2z"/></svg>Progres rapid și sustenabil</li>
+                        <li class="flex items-start"><svg class="w-5 h-5 mr-2 mt-1 text-primary flex-shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.2l-3.5-3.5c-.39-.39-1.02-.39-1.41 0-.39.39-.39 1.02 0 1.41l4.24 4.24c.39.39 1.02.39 1.41 0L20.59 7.79c.39-.39.39-1.02 0-1.41-.39-.39-1.02-.39-1.41 0L9 16.2z"/></svg>Flexibilitate în programare</li>
+                    </ul>
+                </div>
+                <!-- Serviciu 2 (Cel Mai Popular) -->
+                <div class="bg-white rounded-xl p-8 shadow-custom border-2 border-primary relative transform scale-105 w-full lg:w-1/3 max-w-md">
+                    <span class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-primary text-white text-sm font-bold py-1 px-4 rounded-full">
+                        Cel Mai Popular
+                    </span>
+                    <h4 class="text-2xl font-bold mb-4">Planuri de<br>Antrenament Online</h4>
+                    <p class="text-4xl font-bold text-primary mb-4">299 RON/lună</p>
+                    <ul class="text-left space-y-2 text-gray-700">
+                        <li class="flex items-start"><svg class="w-5 h-5 mr-2 mt-1 text-primary flex-shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.2l-3.5-3.5c-.39-.39-1.02-.39-1.41 0-.39.39-.39 1.02 0 1.41l4.24 4.24c.39.39 1.02.39 1.41 0L20.59 7.79c.39-.39.39-1.02 0-1.41-.39-.39-1.02-.39-1.41 0L9 16.2z"/></svg>Plan de antrenament detaliat</li>
+                        <li class="flex items-start"><svg class="w-5 h-5 mr-2 mt-1 text-primary flex-shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.2l-3.5-3.5c-.39-.39-1.02-.39-1.41 0-.39.39-.39 1.02 0 1.41l4.24 4.24c.39.39 1.02.39 1.41 0L20.59 7.79c.39-.39.39-1.02 0-1.41-.39-.39-1.02-.39-1.41 0L9 16.2z"/></svg>Ghid nutrițional inclus</li>
+                        <li class="flex items-start"><svg class="w-5 h-5 mr-2 mt-1 text-primary flex-shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.2l-3.5-3.5c-.39-.39-1.02-.39-1.41 0-.39.39-.39 1.02 0 1.41l4.24 4.24c.39.39 1.02.39 1.41 0L20.59 7.79c.39-.39.39-1.02 0-1.41-.39-.39-1.02-.39-1.41 0L9 16.2z"/></svg>Suport săptămânal prin mesaje</li>
+                        <li class="flex items-start"><svg class="w-5 h-5 mr-2 mt-1 text-primary flex-shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.2l-3.5-3.5c-.39-.39-1.02-.39-1.41 0-.39.39-.39 1.02 0 1.41l4.24 4.24c.39.39 1.02.39 1.41 0L20.59 7.79c.39-.39.39-1.02 0-1.41-.39-.39-1.02-.39-1.41 0L9 16.2z"/></svg>Actualizări lunare ale programului</li>
+                    </ul>
+                    <a href="#" class="mt-6 inline-block bg-primary text-white font-bold py-3 px-8 rounded-full shadow-lg hover:bg-secondary transition-colors duration-300">
+                        Alege Acest Plan
+                    </a>
+                </div>
+                <!-- Serviciu 3 -->
+                <div class="bg-white rounded-xl p-8 shadow-custom transition-transform hover:scale-105 duration-300 w-full lg:w-1/3 max-w-md">
+                    <h4 class="text-2xl font-bold mb-4">Antrenament în Grup</h4>
+                    <p class="text-4xl font-bold text-primary mb-4">80 RON/sesiune</p>
+                    <ul class="text-left space-y-2 text-gray-700">
+                        <li class="flex items-start"><svg class="w-5 h-5 mr-2 mt-1 text-primary flex-shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.2l-3.5-3.5c-.39-.39-1.02-.39-1.41 0-.39.39-.39 1.02 0 1.41l4.24 4.24c.39.39 1.02.39 1.41 0L20.59 7.79c.39-.39.39-1.02 0-1.41-.39-.39-1.02-.39-1.41 0L9 16.2z"/></svg>Sesiuni energice cu maximum 6 persoane</li>
+                        <li class="flex items-start"><svg class="w-5 h-5 mr-2 mt-1 text-primary flex-shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.2l-3.5-3.5c-.39-.39-1.02-.39-1.41 0-.39.39-.39 1.02 0 1.41l4.24 4.24c.39.39 1.02.39 1.41 0L20.59 7.79c.39-.39.39-1.02 0-1.41-.39-.39-1.02-.39-1.41 0L9 16.2z"/></svg>Atmosferă motivațională</li>
+                        <li class="flex items-start"><svg class="w-5 h-5 mr-2 mt-1 text-primary flex-shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.2l-3.5-3.5c-.39-.39-1.02-.39-1.41 0-.39.39-.39 1.02 0 1.41l4.24 4.24c.39.39 1.02.39 1.41 0L20.59 7.79c.39-.39.39-1.02 0-1.41-.39-.39-1.02-.39-1.41 0L9 16.2z"/></svg>Cost redus per persoană</li>
+                        <li class="flex items-start"><svg class="w-5 h-5 mr-2 mt-1 text-primary flex-shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.2l-3.5-3.5c-.39-.39-1.02-.39-1.41 0-.39.39-.39 1.02 0 1.41l4.24 4.24c.39.39 1.02.39 1.41 0L20.59 7.79c.39-.39.39-1.02 0-1.41-.39-.39-1.02-.39-1.41 0L9 16.2z"/></svg>Varietate în exerciții</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sectiune Contact -->
+    <section id="contact" class="py-20 px-4">
+        <div class="max-w-7xl mx-auto text-center fade-in-up">
+            <h3 class="text-4xl font-extrabold mb-4">
+                Hai să <span class="highlight-text">Vorbim</span>
+            </h3>
+            <p class="text-lg text-gray-700 mb-12">
+                Sunt aici să te ajut să-ți atingi obiectivele! Contactează-mă pentru o consultație gratuită și să discutăm despre programul perfect pentru tine.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12">
+                <!-- Card Telefon -->
+                <div class="bg-light-grey rounded-lg p-6 shadow-custom-light text-center transition-transform hover:scale-105 duration-300">
+                    <svg class="w-12 h-12 text-primary mx-auto mb-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20 15.5c-1.25 0-2.45-.2-3.57-.57-.35-.11-.74-.03-1.01.24l-2.22 2.22c-2.83-1.42-5.17-3.76-6.59-6.59l2.22-2.22c.27-.27.35-.66.24-1.01C8.75 6.45 8.55 5.25 8.55 4c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.55c0-.55-.45-1-1-1z"/></svg>
+                    <h4 class="font-bold text-lg mb-2">Telefon</h4>
+                    <p class="text-primary text-xl font-bold mb-1">+40 123 456 789</p>
+                    <p class="text-sm text-gray-600">Disponibil Lun-Vin 9:00-20:00</p>
+                </div>
+                <!-- Card Email -->
+                <div class="bg-light-grey rounded-lg p-6 shadow-custom-light text-center transition-transform hover:scale-105 duration-300">
+                    <svg class="w-12 h-12 text-primary mx-auto mb-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                    <h4 class="font-bold text-lg mb-2">Email</h4>
+                    <a href="mailto:contact@personaltrainer.ro" class="text-primary text-xl font-bold mb-1">contact@personaltrainer.ro</a>
+                    <p class="text-sm text-gray-600">Răspund în maxim 24h</p>
+                </div>
+                <!-- Card Locație -->
+                <div class="bg-light-grey rounded-lg p-6 shadow-custom-light text-center transition-transform hover:scale-105 duration-300">
+                    <svg class="w-12 h-12 text-primary mx-auto mb-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/></svg>
+                    <h4 class="font-bold text-lg mb-2">Locație</h4>
+                    <p class="text-primary text-xl font-bold mb-1">Sala FitnessZone, București</p>
+                    <p class="text-sm text-gray-600">Str. Exemplu Nr. 123</p>
+                </div>
+                <!-- Card WhatsApp -->
+                <div class="bg-light-grey rounded-lg p-6 shadow-custom-light text-center transition-transform hover:scale-105 duration-300">
+                    <svg class="w-12 h-12 text-primary mx-auto mb-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm3.66 14.15c-.41.41-1.1.41-1.51 0l-1.92-1.92c-.41-.41-.41-1.1 0-1.51l.83-.83c.41-.41.41-1.1 0-1.51l-2.09-2.09c-.41-.41-1.1-.41-1.51 0l-1.92 1.92c-.41.41-.41 1.1 0 1.51L8.5 15.5c.41.41 1.1.41 1.51 0l1.92-1.92c.41-.41 1.1-.41 1.51 0l2.09 2.09c.41.41 1.1.41 1.51 0l1.92-1.92c.41-.41 1.1-.41 1.51 0l-.83.83c-.41.41-1.1.41-1.51 0L12 14.07l2.09 2.09c.41.41 1.1.41 1.51 0l1.92-1.92c.41-.41 1.1-.41 1.51 0z"/></svg>
+                    <h4 class="font-bold text-lg mb-2">WhatsApp</h4>
+                    <a href="https://wa.me/40123456789" class="text-primary text-xl font-bold mb-1">Mesaj Direct</a>
+                    <p class="text-sm text-gray-600">Pentru programări rapide</p>
+                </div>
+            </div>
+            <!-- Sectiune Consultatie Gratuita -->
+            <div class="bg-light-grey rounded-xl p-8 shadow-custom text-center max-w-2xl mx-auto fade-in-up">
+                <h4 class="text-2xl font-bold mb-2">Consultație Gratuită de 30 de minute</h4>
+                <p class="text-lg text-gray-700 mb-6">
+                    Să discutăm despre obiectivele tale și să creez programul perfect pentru tine
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+                    <a href="tel:+40123456789" class="inline-flex items-center justify-center bg-primary text-white font-bold py-3 px-8 rounded-full shadow-lg hover:bg-secondary transition-colors duration-300">
+                        <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M20 15.5c-1.25 0-2.45-.2-3.57-.57-.35-.11-.74-.03-1.01.24l-2.22 2.22c-2.83-1.42-5.17-3.76-6.59-6.59l2.22-2.22c.27-.27.35-.66.24-1.01C8.75 6.45 8.55 5.25 8.55 4c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.55c0-.55-.45-1-1-1z"/></svg>
+                        Sună Acum
+                    </a>
+                    <a href="mailto:contact@personaltrainer.ro" class="inline-flex items-center justify-center bg-white text-primary font-bold py-3 px-8 rounded-full shadow-lg border-2 border-primary hover:bg-light-grey transition-colors duration-300">
+                        <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                        Trimite Mesaj
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-light-grey text-gray-600 text-center py-6 mt-10">
+        <div class="flex justify-center space-x-6 mb-4">
+            <a href="#" class="text-gray-500 hover:text-primary transition-colors duration-300">
+                <i class="fab fa-facebook-f fa-2x"></i>
+            </a>
+            <a href="#" class="text-gray-500 hover:text-primary transition-colors duration-300">
+                <i class="fab fa-instagram fa-2x"></i>
+            </a>
+            <a href="#" class="text-gray-500 hover:text-primary transition-colors duration-300">
+                <i class="fab fa-linkedin-in fa-2x"></i>
+            </a>
+        </div>
+        <p>&copy; 2024 FITCOACH. Toate drepturile rezervate.</p>
+    </footer>
+
+    <!-- JavaScript pentru a gestiona animațiile la scroll -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('section');
+
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate');
+                    }
+                });
+            }, {
+                threshold: 0.2 // Declanseaza animatia atunci cand 20% din sectiune este vizibila
+            });
+
+            sections.forEach(section => {
+                const innerElement = section.querySelector('.fade-in-up');
+                if (innerElement) {
+                    observer.observe(innerElement);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
