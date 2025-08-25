@@ -72,6 +72,79 @@
       .highlight-text-white {
         color: #FFFFFF;
       }
+      /* Stiluri specifice pentru quiz */
+      .quiz-container {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 2rem;
+        background: #fff;
+        border-radius: 1rem;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      }
+      .quiz-question {
+        font-size: 1.5rem;
+        font-weight: bold;
+        text-align: center;
+        margin-bottom: 2rem;
+      }
+      .quiz-options {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+      .quiz-option {
+        padding: 1rem;
+        background: #F5F5F5;
+        border: 2px solid transparent;
+        border-radius: 0.75rem;
+        text-align: left;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+      .quiz-option:hover {
+        background: #e0e0e0;
+      }
+      .quiz-option.selected {
+        border-color: #FF7F50;
+        background: #FFB380;
+      }
+      .quiz-option.selected .option-text {
+        color: #FFFFFF;
+        font-weight: bold;
+      }
+      .quiz-button {
+        display: block;
+        width: 100%;
+        padding: 1rem;
+        margin-top: 2rem;
+        background: #FF7F50;
+        color: #fff;
+        font-weight: bold;
+        text-align: center;
+        border-radius: 9999px;
+        transition: background-color 0.3s ease;
+      }
+      .quiz-button:hover {
+        background: #FFB380;
+      }
+      .quiz-results {
+        text-align: center;
+      }
+      .quiz-results h4 {
+        font-size: 1.75rem;
+        font-weight: bold;
+        margin-bottom: 1rem;
+      }
+      .quiz-results p {
+        font-size: 1rem;
+        color: #666;
+        margin-bottom: 1.5rem;
+      }
+      .quiz-results .plan-card {
+        padding: 1.5rem;
+        background: #F5F5F5;
+        border-radius: 1rem;
+      }
     </style>
 </head>
 <body class="bg-background text-text font-inter">
@@ -88,7 +161,7 @@
                 <li><a href="#despre" class="hover:text-primary transition-colors duration-300">Despre</a></li>
                 <li><a href="#servicii" class="hover:text-primary transition-colors duration-300">Servicii</a></li>
                 <li><a href="#contact" class="hover:text-primary transition-colors duration-300">Contact</a></li>
-                <li><a href="#" class="bg-primary text-white font-bold py-2 px-6 rounded-full shadow-lg hover:bg-secondary transition-colors duration-300">Programează-te</a></li>
+                <li><a href="#programeaza" class="bg-primary text-white font-bold py-2 px-6 rounded-full shadow-lg hover:bg-secondary transition-colors duration-300">Află Ce ți se Potrivește</a></li>
             </ul>
             <button class="md:hidden text-text text-2xl">
                 <!-- Icon meniu burger -->
@@ -171,7 +244,7 @@
             </p>
             <div class="flex flex-col lg:flex-row items-center lg:items-start justify-center gap-8">
                 <!-- Serviciu 1 -->
-                <div class="bg-white rounded-xl p-8 shadow-custom transition-transform hover:scale-105 duration-300 w-full lg:w-1/3 max-w-md">
+                <div class="bg-white rounded-xl p-8 shadow-custom transition-transform hover:scale-105 duration-300 w-full lg:w-1/3 max-w-md plan-card">
                     <h4 class="text-2xl font-bold mb-4">Antrenament Personal<br>1-la-1</h4>
                     <p class="text-4xl font-bold text-primary mb-4">150 RON/sesiune</p>
                     <ul class="text-left space-y-2 text-gray-700">
@@ -180,9 +253,12 @@
                         <li class="flex items-start"><svg class="w-5 h-5 mr-2 mt-1 text-primary flex-shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.2l-3.5-3.5c-.39-.39-1.02-.39-1.41 0-.39.39-.39 1.02 0 1.41l4.24 4.24c.39.39 1.02.39 1.41 0L20.59 7.79c.39-.39.39-1.02 0-1.41-.39-.39-1.02-.39-1.41 0L9 16.2z"/></svg>Progres rapid și sustenabil</li>
                         <li class="flex items-start"><svg class="w-5 h-5 mr-2 mt-1 text-primary flex-shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.2l-3.5-3.5c-.39-.39-1.02-.39-1.41 0-.39.39-.39 1.02 0 1.41l4.24 4.24c.39.39 1.02.39 1.41 0L20.59 7.79c.39-.39.39-1.02 0-1.41-.39-.39-1.02-.39-1.41 0L9 16.2z"/></svg>Flexibilitate în programare</li>
                     </ul>
+                    <a href="#contact" class="select-plan-btn mt-6 inline-block bg-primary text-white font-bold py-3 px-8 rounded-full shadow-lg hover:bg-secondary transition-all duration-300" style="display: none;">
+                        Alege Acest Plan
+                    </a>
                 </div>
                 <!-- Serviciu 2 (Cel Mai Popular) -->
-                <div class="bg-white rounded-xl p-8 shadow-custom border-2 border-primary relative transform scale-105 w-full lg:w-1/3 max-w-md">
+                <div class="bg-white rounded-xl p-8 shadow-custom border-2 border-primary relative transform scale-105 w-full lg:w-1/3 max-w-md plan-card">
                     <span class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-primary text-white text-sm font-bold py-1 px-4 rounded-full">
                         Cel Mai Popular
                     </span>
@@ -194,12 +270,12 @@
                         <li class="flex items-start"><svg class="w-5 h-5 mr-2 mt-1 text-primary flex-shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.2l-3.5-3.5c-.39-.39-1.02-.39-1.41 0-.39.39-.39 1.02 0 1.41l4.24 4.24c.39.39 1.02.39 1.41 0L20.59 7.79c.39-.39.39-1.02 0-1.41-.39-.39-1.02-.39-1.41 0L9 16.2z"/></svg>Suport săptămânal prin mesaje</li>
                         <li class="flex items-start"><svg class="w-5 h-5 mr-2 mt-1 text-primary flex-shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.2l-3.5-3.5c-.39-.39-1.02-.39-1.41 0-.39.39-.39 1.02 0 1.41l4.24 4.24c.39.39 1.02.39 1.41 0L20.59 7.79c.39-.39.39-1.02 0-1.41-.39-.39-1.02-.39-1.41 0L9 16.2z"/></svg>Actualizări lunare ale programului</li>
                     </ul>
-                    <a href="#" class="mt-6 inline-block bg-primary text-white font-bold py-3 px-8 rounded-full shadow-lg hover:bg-secondary transition-colors duration-300">
+                    <a href="#contact" class="select-plan-btn mt-6 inline-block bg-primary text-white font-bold py-3 px-8 rounded-full shadow-lg hover:bg-secondary transition-all duration-300" style="display: none;">
                         Alege Acest Plan
                     </a>
                 </div>
                 <!-- Serviciu 3 -->
-                <div class="bg-white rounded-xl p-8 shadow-custom transition-transform hover:scale-105 duration-300 w-full lg:w-1/3 max-w-md">
+                <div class="bg-white rounded-xl p-8 shadow-custom transition-transform hover:scale-105 duration-300 w-full lg:w-1/3 max-w-md plan-card">
                     <h4 class="text-2xl font-bold mb-4">Antrenament în Grup</h4>
                     <p class="text-4xl font-bold text-primary mb-4">80 RON/sesiune</p>
                     <ul class="text-left space-y-2 text-gray-700">
@@ -208,6 +284,26 @@
                         <li class="flex items-start"><svg class="w-5 h-5 mr-2 mt-1 text-primary flex-shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.2l-3.5-3.5c-.39-.39-1.02-.39-1.41 0-.39.39-.39 1.02 0 1.41l4.24 4.24c.39.39 1.02.39 1.41 0L20.59 7.79c.39-.39.39-1.02 0-1.41-.39-.39-1.02-.39-1.41 0L9 16.2z"/></svg>Cost redus per persoană</li>
                         <li class="flex items-start"><svg class="w-5 h-5 mr-2 mt-1 text-primary flex-shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.2l-3.5-3.5c-.39-.39-1.02-.39-1.41 0-.39.39-.39 1.02 0 1.41l4.24 4.24c.39.39 1.02.39 1.41 0L20.59 7.79c.39-.39.39-1.02 0-1.41-.39-.39-1.02-.39-1.41 0L9 16.2z"/></svg>Varietate în exerciții</li>
                     </ul>
+                    <a href="#contact" class="select-plan-btn mt-6 inline-block bg-primary text-white font-bold py-3 px-8 rounded-full shadow-lg hover:bg-secondary transition-all duration-300" style="display: none;">
+                        Alege Acest Plan
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sectiune Quiz -->
+    <section id="programeaza" class="py-20 px-4 bg-white">
+        <div class="max-w-4xl mx-auto text-center fade-in-up">
+            <h3 class="text-4xl font-extrabold mb-4">
+                Află Ce <span class="highlight-text">Ți se Potrivește</span>
+            </h3>
+            <p class="text-lg text-gray-700 mb-12">
+                Răspunde la câteva întrebări simple pentru a primi o recomandare personalizată de program de antrenament.
+            </p>
+            <div class="quiz-container">
+                <div id="quiz-content">
+                    <!-- Continutul quiz-ului se va genera aici de catre JavaScript -->
                 </div>
             </div>
         </div>
@@ -288,9 +384,150 @@
         <p>&copy; 2024 FITCOACH. Toate drepturile rezervate.</p>
     </footer>
 
-    <!-- JavaScript pentru a gestiona animațiile la scroll -->
+    <!-- JavaScript pentru a gestiona quiz-ul, animatiile la scroll si butoanele de selectie a planurilor -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            // Logica pentru quiz
+            const quizContainer = document.getElementById('quiz-content');
+            let currentQuestionIndex = 0;
+            const userAnswers = {};
+
+            const questions = [
+                {
+                    question: "Care este obiectivul tău principal?",
+                    options: [
+                        { text: "Pierdere în greutate", value: "weight_loss" },
+                        { text: "Câștig de masă musculară", value: "muscle_gain" },
+                        { text: "Îmbunătățirea condiției fizice generale", value: "general_fitness" },
+                        { text: "Pregătire pentru o competiție", value: "competition_prep" }
+                    ]
+                },
+                {
+                    question: "Cât de des poți face mișcare pe săptămână?",
+                    options: [
+                        { text: "1-2 ori", value: "1-2" },
+                        { text: "3-4 ori", value: "3-4" },
+                        { text: "5+ ori", value: "5+" }
+                    ]
+                },
+                {
+                    question: "Ai experiență anterioară cu antrenamentele?",
+                    options: [
+                        { text: "Nu, sunt începător", value: "beginner" },
+                        { text: "Am mai făcut, dar sporadic", value: "intermediate" },
+                        { text: "Da, am experiență avansată", value: "advanced" }
+                    ]
+                },
+                {
+                    question: "Preferi să te antrenezi singur sau cu un grup?",
+                    options: [
+                        { text: "Singur, cu atenția totală a antrenorului", value: "one_on_one" },
+                        { text: "Într-un grup mic, pentru motivație", value: "group" },
+                        { text: "Singur, dar cu un plan de urmat", value: "online" }
+                    ]
+                }
+            ];
+
+            const recommendations = {
+                "weight_loss": "Planuri de Antrenament Online",
+                "muscle_gain": "Antrenament Personal 1-la-1",
+                "general_fitness": "Antrenament în Grup",
+                "competition_prep": "Antrenament Personal 1-la-1",
+                "1-2": "Planuri de Antrenament Online",
+                "3-4": "Antrenament în Grup",
+                "5+": "Antrenament Personal 1-la-1",
+                "beginner": "Antrenament Personal 1-la-1",
+                "intermediate": "Antrenament în Grup",
+                "advanced": "Antrenament Personal 1-la-1",
+                "one_on_one": "Antrenament Personal 1-la-1",
+                "group": "Antrenament în Grup",
+                "online": "Planuri de Antrenament Online"
+            };
+
+            function renderQuestion() {
+                if (currentQuestionIndex < questions.length) {
+                    const questionData = questions[currentQuestionIndex];
+                    let optionsHtml = '';
+                    questionData.options.forEach(option => {
+                        optionsHtml += `
+                            <div class="quiz-option" data-value="${option.value}">
+                                <span class="option-text">${option.text}</span>
+                            </div>
+                        `;
+                    });
+
+                    quizContainer.innerHTML = `
+                        <div class="quiz-question">${questionData.question}</div>
+                        <div class="quiz-options">
+                            ${optionsHtml}
+                        </div>
+                        <button class="quiz-button hidden" id="next-button">Următoarea Întrebare</button>
+                    `;
+
+                    document.querySelectorAll('.quiz-option').forEach(option => {
+                        option.addEventListener('click', (e) => {
+                            document.querySelectorAll('.quiz-option').forEach(opt => opt.classList.remove('selected'));
+                            e.currentTarget.classList.add('selected');
+                            document.getElementById('next-button').classList.remove('hidden');
+                            userAnswers[currentQuestionIndex] = e.currentTarget.dataset.value;
+                        });
+                    });
+
+                    document.getElementById('next-button').addEventListener('click', () => {
+                        currentQuestionIndex++;
+                        renderQuestion();
+                    });
+
+                } else {
+                    showResults();
+                }
+            }
+
+            function showResults() {
+                let counts = {};
+                for (const key in userAnswers) {
+                    const value = userAnswers[key];
+                    const recommendation = recommendations[value];
+                    counts[recommendation] = (counts[recommendation] || 0) + 1;
+                }
+
+                const finalRecommendation = Object.keys(counts).reduce((a, b) => counts[a] > counts[b] ? a : b, Object.keys(counts)[0]);
+
+                let resultText = '';
+                let contactLink = '#contact';
+
+                switch(finalRecommendation) {
+                    case "Antrenament Personal 1-la-1":
+                        resultText = `Pe baza răspunsurilor tale, programul perfect pentru tine este <strong>Antrenamentul Personal 1-la-1</strong>. Vei beneficia de un plan complet personalizat și de atenție totală din partea antrenorului pentru a-ți atinge obiectivele rapid.`;
+                        contactLink = '#contact';
+                        break;
+                    case "Planuri de Antrenament Online":
+                        resultText = `Se pare că ești o persoană independentă, iar <strong>Planurile de Antrenament Online</strong> ar fi alegerea ideală. Primești un ghid detaliat și flexibilitate, perfect pentru a te antrena oriunde și oricând.`;
+                        contactLink = '#contact';
+                        break;
+                    case "Antrenament în Grup":
+                        resultText = `Recomandarea mea este <strong>Antrenamentul în Grup</strong>. Vei găsi motivația necesară într-o atmosferă energică, alături de alți oameni cu obiective similare.`;
+                        contactLink = '#contact';
+                        break;
+                    default:
+                        resultText = "Nu am putut face o recomandare specifică. Te rog să ne contactezi pentru o consultație personalizată.";
+                        contactLink = '#contact';
+                }
+
+                quizContainer.innerHTML = `
+                    <div class="quiz-results">
+                        <h4>Rezultatul tău</h4>
+                        <p>${resultText}</p>
+                        <a href="${contactLink}" class="bg-primary text-white font-bold py-3 px-8 rounded-full shadow-lg hover:bg-secondary transition-colors duration-300">
+                            Programează o Consultație
+                        </a>
+                    </div>
+                `;
+            }
+
+            renderQuestion();
+
+            // Logica pentru animatiile la scroll
             const sections = document.querySelectorAll('section');
 
             const observer = new IntersectionObserver(entries => {
@@ -307,6 +544,40 @@
                 const innerElement = section.querySelector('.fade-in-up');
                 if (innerElement) {
                     observer.observe(innerElement);
+                }
+            });
+
+            // Functie pentru a ascunde toate butoanele "Alege Acest Plan"
+            function hideAllSelectButtons() {
+                document.querySelectorAll('.select-plan-btn').forEach(btn => {
+                    btn.style.display = 'none';
+                });
+            }
+
+            // Logica pentru afisarea butoanelor la click pe card
+            const planCards = document.querySelectorAll('.plan-card');
+
+            planCards.forEach(card => {
+                card.addEventListener('click', (event) => {
+                    // Previne ca eventul de click sa se propage la body
+                    event.stopPropagation();
+                    
+                    // Ascunde toate butoanele de selectie
+                    hideAllSelectButtons();
+                    
+                    // Afiseaza butonul din cardul curent
+                    const button = card.querySelector('.select-plan-btn');
+                    if (button) {
+                        button.style.display = 'inline-block';
+                    }
+                });
+            });
+
+            // Logica pentru a ascunde butoanele cand se da click oriunde altundeva
+            document.body.addEventListener('click', (event) => {
+                const isClickInsideCard = event.target.closest('.plan-card');
+                if (!isClickInsideCard) {
+                    hideAllSelectButtons();
                 }
             });
         });
